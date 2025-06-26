@@ -1,0 +1,118 @@
+*{
+    background-color: grey;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#h1{
+    text-align: center;
+    background-color: red;
+    border-radius: 100px;
+    border: 2px solid black;
+    color: black;
+    padding: 10px;
+    font-size: 50px;
+}
+#task-form{
+    background-color: blueviolet;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-align: center;
+}
+#task-name{
+    background-color: grey;
+    color: black;
+    padding: 7px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#subject, #deadline, #priority{
+    background-color: white;
+    color: black;
+    padding: 7px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#submit{
+    background-color: white;
+    color: black;
+    padding: 7px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px; 
+}
+.sub{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+}
+#timer{
+    text-align: center;
+}
+#h2{
+    text-align: center;
+    font-size: 100px;
+    font-weight: 100;
+    background-color: inherit;
+    margin: 0;
+    padding: 0;
+}
+#timer-controls{
+    text-align: center;
+    border: 2px solid black;
+    background-color: blue;
+    padding: 0px;
+    border-radius: 100px;
+}
+.control{
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: larger;
+}
+#main-footer{
+    background-color: white;
+    text-align: center;
+    border: 2px solid black;
+}
+.footer-text{
+    background-color: white;
+}
+.submit{
+    background-color:blueviolet;
+    border: 2px;
+    border-radius: 100px;
+    text-align: center;
+}
+.task{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#task-list{
+    background-color: aqua;
+    list-style-type: none;
+    padding: 0;
+}
+#task-list li {
+    background-color: #fff !important;
+    color: #222 !important;
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 10px 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+}
+#task-list li strong {
+    background-color: transparent !important;
+    color: #000 !important;
+    padding: 0;
+}
+
+
