@@ -39,6 +39,21 @@ currentDate.textContent = `Today's Date: ${formateddate}`;
 const form = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
 
+// Load tasks from localStorage on page load
+window.addEventListener("DOMContentLoaded", function () {
+  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  savedTasks.forEach(task => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <strong>Task:</strong> ${task.name} <br>
+      <strong>Subject:</strong> ${task.subject} <br>
+      <strong>Deadline:</strong> ${task.deadline} <br>
+      <strong>Priority:</strong> ${task.priority}
+    `;
+    taskList.appendChild(li);
+  });
+});
+
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page refresh
 
@@ -59,6 +74,16 @@ form.addEventListener("submit", function (event) {
 
   // Add to task list
   taskList.appendChild(li);
+
+  // Save to localStorage
+  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  savedTasks.push({
+    name: taskName,
+    subject: subject,
+    deadline: deadline,
+    priority: priority
+  });
+  localStorage.setItem("tasks", JSON.stringify(savedTasks));
 
   // Clear form inputs after submission
   form.reset();
@@ -107,4 +132,4 @@ resetBtn.addEventListener("click", function () {
 });
 
 // Initialize timer display on page load
-h2.textContent = formatTime(count);
+h2.textContent
