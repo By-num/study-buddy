@@ -1,5 +1,36 @@
-const currentDate = document.getElementById("current-date");
+// --- Motivational Quote API Integration ---
+const quoteContainer = document.createElement("div");
+quoteContainer.id = "quote-container";
+quoteContainer.style.textAlign = "center";
+quoteContainer.style.margin = "20px auto";
+quoteContainer.style.fontStyle = "italic";
+quoteContainer.style.background = "#fff";
+quoteContainer.style.color = "#222";
+quoteContainer.style.border = "2px solid #000";
+quoteContainer.style.borderRadius = "10px";
+quoteContainer.style.maxWidth = "600px";
+quoteContainer.style.padding = "15px";
+quoteContainer.textContent = "Loading motivational quote...";
 
+// Insert quote container at the top of the body
+document.body.insertBefore(quoteContainer, document.body.firstChild);
+
+// Fetch a random motivational quote from ZenQuotes API
+fetch("https://zenquotes.io/api/random")
+  .then(res => res.json())
+  .then(data => {
+    if (Array.isArray(data) && data[0]) {
+      quoteContainer.textContent = `"${data[0].q}" — ${data[0].a}`;
+    } else {
+      quoteContainer.textContent = "Stay motivated and keep studying!";
+    }
+  })
+  .catch(() => {
+    quoteContainer.textContent = "Stay motivated and keep studying!";
+  });
+
+// --- Date Display ---
+const currentDate = document.getElementById("current-date");
 const today = new Date();
 const formateddate = today.toDateString();
 currentDate.textContent = `Today's Date: ${formateddate}`;
