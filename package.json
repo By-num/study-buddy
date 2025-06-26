@@ -1,0 +1,11 @@
+{
+  "name": "study-buddy",
+  "version": "1.0.0",
+  "description": "A simple, user-friendly web app to organize study tasks and track study time.",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Open index.html in your browser.'"
+  },
+  "author": "Bynum",
+  "license": "MIT"
+}
