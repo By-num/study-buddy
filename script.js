@@ -39,20 +39,43 @@ currentDate.textContent = `Today's Date: ${formateddate}`;
 const form = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
 
-// Load tasks from localStorage on page load
-window.addEventListener("DOMContentLoaded", function () {
-  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  savedTasks.forEach(task => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>Task:</strong> ${task.name} <br>
-      <strong>Subject:</strong> ${task.subject} <br>
-      <strong>Deadline:</strong> ${task.deadline} <br>
-      <strong>Priority:</strong> ${task.priority}
-    `;
-    taskList.appendChild(li);
+// Helper function to add a task to the DOM with delete button
+function addTaskToList(task, idx) {
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <strong>Task:</strong> ${task.name} <br>
+    <strong>Subject:</strong> ${task.subject} <br>
+    <strong>Deadline:</strong> ${task.deadline} <br>
+    <strong>Priority:</strong> ${task.priority}
+    <br>
+    <button class="delete-task" data-idx="${idx}">✅ Mark as Done</button>
+  `;
+  taskList.appendChild(li);
+
+  // Add delete functionality
+  li.querySelector('.delete-task').addEventListener('click', function () {
+    deleteTask(idx);
   });
-});
+}
+
+// Delete task by index and update localStorage and DOM
+function deleteTask(idx) {
+  let savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  savedTasks.splice(idx, 1);
+  localStorage.setItem("tasks", JSON.stringify(savedTasks));
+  // Refresh the list
+  renderTaskList();
+}
+
+// Render all tasks from localStorage
+function renderTaskList() {
+  taskList.innerHTML = '';
+  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  savedTasks.forEach((task, i) => addTaskToList(task, i));
+}
+
+// Load tasks from localStorage on page load
+window.addEventListener("DOMContentLoaded", renderTaskList);
 
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page refresh
@@ -63,27 +86,19 @@ form.addEventListener("submit", function (event) {
   const deadline = document.getElementById("deadline").value;
   const priority = document.getElementById("priority").value;
 
-  // Create a new list item
-  const li = document.createElement("li");
-  li.innerHTML = `
-    <strong>Task:</strong> ${taskName} <br>
-    <strong>Subject:</strong> ${subject} <br>
-    <strong>Deadline:</strong> ${deadline} <br>
-    <strong>Priority:</strong> ${priority}
-  `;
-
-  // Add to task list
-  taskList.appendChild(li);
-
   // Save to localStorage
   const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  savedTasks.push({
+  const newTask = {
     name: taskName,
     subject: subject,
     deadline: deadline,
     priority: priority
-  });
+  };
+  savedTasks.push(newTask);
   localStorage.setItem("tasks", JSON.stringify(savedTasks));
+
+  // Re-render task list
+  renderTaskList();
 
   // Clear form inputs after submission
   form.reset();
@@ -132,4 +147,4 @@ resetBtn.addEventListener("click", function () {
 });
 
 // Initialize timer display on page load
-h2.textContent
+h2.textContent = formatTime(count);
