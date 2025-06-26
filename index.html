@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 id="h1">Study Buddy💯</h1>
+
+    <p id="current-date"></p>
+
+    <form id="task-form">
+        <label for="task-name" class="task">Task name</label>
+        <input type="text" id="task-name" name="Task name" required>
+        
+        <label for="subject" class="task">Subject</label>
+        <select id="subject" name="subject">
+          <option value="Mathematics" class="sub">Mathematics</option> 
+          <option value="English" class="sub">English</option>
+          <option value="Kiswahili" class="sub">Kiswahili</option>
+          <option value="Biology" class="sub">Biology</option>
+          <option value="Physics" class="sub">Physics</option>
+          <option value="Chemistry" class="sub">Chemistry</option>
+          <option value="Geography" class="sub">Geography</option>
+          <option value="Art and Design" class="sub">Art and Design</option>
+          <option value="Computer" class="sub">Computer</option>
+          <option value="Agriculture" class="sub">Agriculture</option>
+          <option value="Home Science" class="sub">Home Science</option>
+          <option value="Business" class="sub">Business</option>
+          <option value="French" class="sub">French</option>
+        </select>
+        <label for="deadline" class="task">Deadline</label>
+        <input type="date" id="deadline" name="deadline" required>
+        <label for="priority" class="task">Priority</label>
+        <select id="priority" name="priority">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <ul id="task-list"></ul>
+
+    <div id="timer-section">
+        <h1 id="timer">Study Timer⏰</h1>
+        <h2 id="h2">00:00:00</h2>
+        <div id="timer-controls">
+            <button class="control" id="start">start ▶️</button>
+            <button class="control" id="pause">pause ⏸️</button>
+            <button class="control" id="reset">reset 🔁</button>
+        </div>
+    </div>
+    <footer id="main-footer">
+        <p class="footer-text">Created by Bynum</p>
+        <p class="footer-text">Year:2025</p>
+        <p class="footer-text">Course name:End of Phase one project</p>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>
